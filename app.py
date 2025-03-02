@@ -2,7 +2,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+port = int(os.getenv('PORT',8501))
 
 model = tf.keras.models.load_model('credit_card_fraud_detection_model.h5')
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
@@ -47,4 +51,7 @@ if uploaded_file:
             )
     except Exception as e:
         st.error(f"Error processing file: {e}")
+
+st.title("My streamlit App")
+st.write(f"Running on PORT {port}")
 
