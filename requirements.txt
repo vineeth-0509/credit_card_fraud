@@ -1,0 +1,4 @@
+stremalit
+numpy
+pandas
+tensorflow
